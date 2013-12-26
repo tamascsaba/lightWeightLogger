@@ -1,0 +1,20 @@
+extends layouts/default
+
+block main
+  h2 Hiba történt
+
+block content
+  .row
+      .span12
+        .error-container
+          h1 Oops!
+          h2 500-as hiba
+          .error-details
+            | Sajnos hiba történt szellem került a dobozba :(
+          .error-actions
+            a.btn.btn-large.btn-primary(href='/dashboard')
+              i.icon-chevron-left
+              |  Vissza az edzésfalhoz.
+            a.btn.btn-large(href='/contact')
+              i.icon-envelope
+              |  Kapcsolat

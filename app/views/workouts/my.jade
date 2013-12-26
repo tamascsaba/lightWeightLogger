@@ -1,0 +1,23 @@
+extends ../layouts/default
+
+block main
+  h2 Saját edzéseim
+  p Böngészd át az edzéseidet és nyomon követheted a változásokat.
+
+block content
+  each workout in workouts
+    .workout
+      a.title(href='/workouts/'+workout._id, title=workout.title) #{workout.title}
+      p=workout.body
+      .author
+        span= formatDate(workout.createdAt)
+        span &nbsp;| Edzett :&nbsp;
+        a(href="/users/"+workout.user._id)=workout.user.name
+        | &nbsp;|&nbsp;
+        if (workout.tags)
+          span.tags
+            span Címkék :&nbsp;
+            each tag in workout.tags.split(',')
+              a.tag(href="/tags/"+tag)
+                i.icon-tags
+                |  #{tag}

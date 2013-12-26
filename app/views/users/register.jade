@@ -1,0 +1,43 @@
+extends ../layouts/default
+
+block main
+  h2.visible-desktop.visible-tablet= title
+  p Add meg a regisztrációhoz szükséges adatokat.
+
+block content
+  .account-container.register
+      .clearfix
+        form(action='/user/create', method='post')
+          .login-social
+            p Bejelentkezés közösségi fiókkal:
+            .twitter
+              a.btn_1(href='/auth/twitter') Twitter fiók
+            .fb
+              a.btn_2(href='/auth/facebook') Facebook fiók
+          .login-fields
+            p Készíts el a saját fiókód.
+            if (errors.length)
+              each error, i in errors
+                for item in error
+                  .alert.alert-error
+                      button.close(type='button', data-dismiss='alert') ×
+                      strong Hiba! 
+                      | #{item.msg}
+            .field
+              label(for='name') Teljes neved:
+              input#firstname.login.username-field(type='text', name='name', value='#{user.name || ''}', placeholder='Teljes neved')
+            .field
+              label(for='email') Email címed:
+              input#email.login.email-field(type='text', name='email', value='#{user.email || ''}', placeholder='Email')
+            .field
+              label(for='username') Felhasználó neved:
+              input#username.login.username-field(type='text', name='username', value='#{user.username || ''}', placeholder='Felhasználóneved')
+            .field
+              label(for='password') Jelszavad:
+              input#password.login.password-field(type='password', name='password', value='#{user.password || ''}', placeholder='Jelszó')
+            .field
+              label(for='password') Captcha:
+              img(src='/captcha.jpg', width='120').captcha
+              input#captcha.login.captcha-field(type='text', name='digits', value='', placeholder='Kérlek ird be a lenti képet található számókat!')
+          .login-actions
+            button.button.btn.btn-primary.btn-large Regisztráció

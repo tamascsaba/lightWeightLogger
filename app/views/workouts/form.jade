@@ -1,0 +1,38 @@
+extends ../layouts/default
+
+block content
+  - var action = '/workouts'
+  if (!workout.isNew)
+    - action += '/'+workout.id
+
+  .workout-container
+    .clearfix
+      form(action=action, method='post', enctype="multipart/form-data")
+        if (typeof errors !== 'undefined')
+          .fade.in.alert.alert-block.alert-error
+            a.close(data-dismiss="alert", href="#") x
+            ul
+              each error in errors
+                li= error.type
+        .workout-fields
+          h3 Kérlek add meg az edzésed adatait:
+          if (!workout.isNew)
+            .field
+              input(type="hidden", name="_method", value="PUT")
+          .field
+            label(for='title') Név:
+            input#title.workout-title-field(type='text', name='title', value='#{workout.title}', placeholder='Hátedzés vagy Lábedzés stb.')
+          .field
+            label(for='title') Idő (perc):
+            input#time.workout-time-field(type='number', name='time', value='#{workout.time}', placeholder='Edzésídő percben')
+          .field
+            label(for='desc') Adatok:
+            textarea#desc.workout-body-field(type='text', name='body', placeholder='Írd be az edzésed leírását')=workout.body
+          .field
+            label(for='title') Címkék:
+            input#tags.workout-tags-field(type='text', name="tags", value=workout.tags, placeholder='Írd be a címkéidet')
+        .rows
+          .span1
+            button.button.btn.btn-primary.btn-large(type='submit') Mentés
+          .span1
+            a.button.btn.btn-secundary.btn-large(href='/workouts', title="Mégse") Mégse

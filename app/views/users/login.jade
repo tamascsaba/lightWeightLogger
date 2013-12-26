@@ -1,0 +1,34 @@
+extends ../layouts/default
+
+block main
+  h2.visible-desktop.visible-tablet= title
+  p Kérlek add meg a felhasználóneved és jelszavad.
+
+
+block content
+  .account-container.login
+    .clearfix
+      form(action='/user/session', method='post')#login-form
+        if (message.length)
+          .alert.alert-error
+              button.close(type='button', data-dismiss='alert') ×
+              strong Hiba! 
+              | #{message}
+        .login-fields
+          .field
+            label(for='username') Felhasználónév:
+            input#username.login.username-field(type='text', name='username', value='', placeholder='Felhasználónév')
+          .field
+            label(for='password') Password:
+            input#password.login.password-field(type='password', name='password', value='', placeholder='Jelszó')
+        .login-actions
+          span.login-checkbox
+            input#Field.field.login-checkbox(name='Field', type='checkbox', value='First Choice', tabindex='4')
+            label.choice(for='Field') Emlékezz rám!
+          button.button.btn.btn-primary.btn-large Bejelentkezés
+        .login-social
+          p jelentkezz be más fiókkal.
+          .twitter
+            a.btn_1(href='/auth/twitter') Twitter fiók
+          .fb
+            a.btn_2(href='/auth/facebook') Facebook fiók

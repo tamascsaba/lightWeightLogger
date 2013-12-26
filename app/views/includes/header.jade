@@ -1,0 +1,24 @@
+.container
+  a.brand(href='/')= appName
+  a.btn-navbar(href='javascript:;', data-toggle='collapse', data-target='.nav-collapse')
+    i.icon-reorder
+  .nav-collapse
+    ul#main-nav.nav.pull-right
+      if (req.isAuthenticated())
+        li(class="nav-icon #{ isActive('/dashboard') }")
+          a(href='/')
+            i.icon-home
+            span Vezérlőpult
+      else 
+        li(class="nav-icon #{ isActive('/home') }")
+          a(href='/')
+            i.icon-home
+            span Főoldal
+      li(class="nav-item #{ isActive('/about-us') }")
+        a(href='/about-us')
+          i.icon-th
+          span Oldalról
+      li(class="nav-item #{ isActive('/contact') }")
+        a(href='/contact')
+          i.icon-copy
+          span Kapcsolat

@@ -1,0 +1,5 @@
+form.form-vertical(method="post", action="/workouts/#{workout._id}/comments")
+  .control-group
+    .controls
+      input#comment.input-xxlarge(type='text', rows="6", name="body", placeholder='Mi a véleményed?')
+  button.btn.btn-primary(type='submit') Hozzászólók

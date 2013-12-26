@@ -1,0 +1,23 @@
+.container
+  a#menu-trigger.dropdown-toggle(href='/', data-toggle='dropdown', data-target='#')
+    i.icon-cog
+  #top-nav
+    ul.pull-right
+      if (req.isAuthenticated())
+        li
+          a(href="/user/"+req.user.id, title="Profile")
+            i.icon-user
+            | Profilom
+        li
+          a(href="/user/logout", title="Kilépés")
+            i.icon-signout
+            | Kilépés
+      else
+        li
+          a(href="/user/login", title="Belépés")
+            i.icon-signin
+            | Belépés
+        li
+          a(href="/user/register", title="Regisztráció")
+            i.icon-user
+            | Regisztráció

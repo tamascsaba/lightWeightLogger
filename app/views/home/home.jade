@@ -1,0 +1,42 @@
+extends ../layouts/default
+
+block main
+  div.row
+    div.span8
+      h2.visible-desktop.visible-tablet Pehelysúlyú, egyszerűen használható, mobilbarát workout logger. 
+      blockquote
+        p A siker létráját nem lehet zsebre tett kézzel megmászni.
+        small Arnold Schwarzenegger
+    div.home-header-buttons.span4
+      div.row
+        div.span2
+          a(data-toggle="modal", href="/user/login", data-target="#login-modal").btn.btn-large.btn-primary.btn-block.modal-link Belépés
+        div.span2
+          a(data-toggle="modal", href="user/register", data-target="#register-modal").btn.btn-large.btn-secondary.btn-block Regisztráció
+
+
+block content
+  div.row
+    div.span8 
+      h3 Néhány érv a LeightWeight Logger melett:
+      ol.faqList
+          li
+            h4 Miért hasznos a LeightWeight?
+            p Mert gyorsan és könnyedén tudod rögzíteni az edzésed
+          li
+            h4 Social támogatás
+            p Akár egy kattintással Facebook vagy Twitter accountod segítégével könnyedén be tudsz jelentkezni.
+          li
+            h4 Könnyedén rögzíteni tudod az edzésied
+            p A LeightWeight segítségével gyorsan rögzíteni tudod az edzésed, akár mobiltelefonról is.
+          li
+            h4 Nyomon tudod követni mások edzéseid
+            p Az edzésfalon mindig láthatod mások által elért eredményt, ami extra motivációt adhat a számodra.
+
+    div.span4
+      h3 Rövid bemutató videó:
+      iframe(width='370', height='230', src='http://www.youtube.com/embed/kyClVx8huQI', frameborder='0', allowfullscreen='allowfullscreen')
+
+
+  include modals/login
+  include modals/register

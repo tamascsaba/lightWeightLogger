@@ -1,0 +1,21 @@
+each workout in workouts
+  .workout
+    a.title(href='/workouts/'+workout._id, title=workout.title) #{workout.title}
+    p=workout.body
+    .author
+      span Dátum : #{workout.createdAt.getFullYear()}. #{workout.createdAt.getMonth()+1}. #{workout.createdAt.getDate()}.
+      span &nbsp;| Edzett :&nbsp;
+      span= workout.user.name
+      | &nbsp;|&nbsp;
+      if (workout.tags)
+        span.tags
+          span Címkék :&nbsp;
+          each tag in workout.tags.split(',')
+            a.tag(href="/tags/"+tag)
+              i.icon-tags
+              |  #{tag}
+
+if (pages > 1)
+  .pagination
+    ul
+      != createPagination(pages, page)

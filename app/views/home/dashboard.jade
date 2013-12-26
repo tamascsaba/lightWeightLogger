@@ -1,0 +1,35 @@
+extends ../layouts/default
+
+block main
+  div.row
+    div.span10
+      h2 Vezérlőpult
+      p Az edzésfalon megtekintheted mások teljesítményét is.
+    //- div.span2.dashboard-header-buttons
+    //- a(data-toggle="modal", href="/user/login", data-target="#login-modal").btn.btn-large.btn-primary.btn-block.modal-link Valami gomb
+
+
+block content
+  div.row
+    div.span8.workouts-list
+      h2= title
+      include ../workouts/xhr/index
+
+    div.span4
+      a(data-toggle="modal", href="/workouts/new", data-target="#new-workout-modal").btn.btn-large.btn-secondary.btn-block.btn-big-block(type='button') Edzés Logolása
+      a(href="/workouts/my").btn.btn-large.btn-block.btn-big-block.btn-tertiary Saját edzéseim
+
+      h3 Pár statisztika:
+      table.table.stat-table
+        tbody
+          tr
+            td.value= yesterdayCount
+            td.full Edzés 24 órán belül
+          tr
+            td.value= count
+            td.full Edzés összesen
+          tr
+            td.value= userCount
+            td.full Regisztrált felhasználó
+
+  include modals/new-workout

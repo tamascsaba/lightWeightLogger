@@ -1,0 +1,37 @@
+{
+    "name": "LeighWeigt",
+    "description": "LeightWeight Workout Logger",
+    "version": "0.0.2",
+    "private": true,
+    "author": "Tamás Csaba <tamcsaba@gmail.com>",
+    "engines": {
+        "node": "0.10.2",
+        "npm": "1.2.15"
+    },
+    "scripts": {
+      "start": "./node_modules/.bin/nodemon server.js"
+    },
+     "dependencies": {
+      "express": "latest",
+      "jade": "latest",
+      "express-partials": "latest",
+      "express-validator": "latest",
+      "mongoose": "latest",
+      "socket.io": "latest",
+      "connect-mongo": "latest",
+      "connect-flash": "latest",
+      "passport": "latest",
+      "passport-local": "latest",
+      "passport-facebook": "latest",
+      "passport-twitter": "latest",
+      "passport-google-oauth": "latest",
+      "underscore": "latest",
+      "gzippo": "latest",
+      "async": "latest",
+      "nodemon": "latest",
+      "view-helpers": "latest",
+      "pound": "latest",
+      "ayah": "latest",
+      "captcha": "latest"
+  }
+}

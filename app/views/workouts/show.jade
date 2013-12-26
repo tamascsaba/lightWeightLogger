@@ -1,0 +1,37 @@
+extends ../layouts/default
+
+block main
+  h2= workout.title
+
+block content
+  .row
+    .span9
+      p=workout.body
+      p.author
+        span Edzett :&nbsp;
+        a(href="/users/"+workout.user._id)=workout.user.name
+      .date= formatDate(workout.createdAt, "%b %d, %Y at %I:%M %p")
+      if (workout.tags)
+        .tags
+          | Címkék :&nbsp;
+          each tag in workout.tags.split(',')
+            a.tag(href="/tags/"+tag)
+              i.icon-tags
+              |  #{tag}
+    .span3
+      if (!workout.isNew && workout.image && workout.image.files && workout.image.files.length)
+        img(src=workout.image.cdnUri + '/mini_' + workout.image.files[0])
+
+      form.center.form-inline.confirm(action="/workouts/"+workout.id, method="post")
+        if (req.user._id.toString() == workout.user._id.toString())
+          a.btn.btn-large(href='/workouts/'+workout._id+'/edit', title="edit") Szerkesztés
+          &nbsp;&nbsp;
+          input(type="hidden", name="_method", value="DELETE")
+          button.btn-large.btn.btn-danger(type="submit") Törlés
+
+  p
+    br
+    h2 Hozzászólások
+    each comment in workout.comments
+      include ../comments/comment
+    include ../comments/form
